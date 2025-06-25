@@ -57,6 +57,14 @@ def rref(M:np.array)->np.array:
       scale_row(E,k,factor)
    return E
             
+def is_singular(M:np.array)->bool:
+   E,pivot_cols=row_echelon(M)
+   rank=len(pivot_cols)
+   n_rows,n_cols= M.shape
+   if n_rows!= n_cols:
+      raise ValueError('singularity is for 4x4 matrices')
+   return (rank<n_rows)
+
 
 M= np.array([[4,1,1]
               ,[1,1,2]
